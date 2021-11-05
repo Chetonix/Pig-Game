@@ -14,7 +14,9 @@ const btnHold = document.querySelector('.btn--hold');
 //another way to select ids
 //const score1 = document.getElementById('score--1');
 
+const scores = [0, 0];
 let currentScore = 0;
+let activePlayer = 0;
 
 //~START~ : Making the scores be 0 at the start
 score0El.textContent = 0;
@@ -35,8 +37,13 @@ btnRoll.addEventListener('click', function () {
   if (dice !== 1) {
     //add dice to the current score
     currentScore += dice;
-    current0El.textContent = currentScore; //Change later to be dynamic i.e. dispaly for the active player
+    //current0El.textContent = currentScore; //Change later to be dynamic i.e. dispaly for the active player
+    document.getElementById(`current--${activePlayer}`).textContent =
+      currentScore;
   } else {
     // switch the player
+    document.getElementById(`current--${activePlayer}`).textContent = 0;
+    currentScore = 0;
+    activePlayer = activePlayer === 1 ? 0 : 1;
   }
 });
