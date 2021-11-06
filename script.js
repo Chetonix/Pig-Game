@@ -23,7 +23,6 @@ score1El.textContent = 0;
 //Hidding the dice image at the start
 diceEl.classList.add('hidden');
 
-
 //Adding a function to the switch player codes
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
@@ -46,7 +45,7 @@ const init = function () {
 
   player0El.classList.remove('player--winner');
   player1El.classList.remove('player--winner');
-  player1El.classList.add('player--active');
+  player0El.classList.add('player--active');
   player1El.classList.remove('player--active');
   diceEl.classList.add('hidden');
 
