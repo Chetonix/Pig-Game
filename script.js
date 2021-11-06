@@ -17,17 +17,12 @@ const btnHold = document.querySelector('.btn--hold');
 //another way to select ids
 //const score1 = document.getElementById('score--1');
 
-const scores = [0, 0];
-let currentScore = 0;
-let activePlayer = 0;
-
 //~START~ : Making the scores be 0 at the start
 score0El.textContent = 0;
 score1El.textContent = 0;
 //Hidding the dice image at the start
 diceEl.classList.add('hidden');
 
-let playing = true;
 
 //Adding a function to the switch player codes
 const switchPlayer = function () {
@@ -37,6 +32,34 @@ const switchPlayer = function () {
   player0El.classList.toggle('player--active');
   player1El.classList.toggle('player--active');
 };
+
+let scores;
+let currentScore;
+let activePlayer;
+let playing;
+
+const init = function () {
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+
+  player0El.classList.remove('player--winner');
+  player1El.classList.remove('player--winner');
+  player1El.classList.add('player--active');
+  player1El.classList.remove('player--active');
+  diceEl.classList.add('hidden');
+
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
+
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+};
+
+init();
 
 //Rolling Dice Functionality
 btnRoll.addEventListener('click', function () {
@@ -87,14 +110,4 @@ btnHold.addEventListener('click', function () {
   }
 });
 
-btnNew.addEventListener('click', function () {
-  score0El.textContent = 0;
-  score1El.textContent = 0;
-  current0El.textContent = 0;
-  current1El.textContent = 0;
-
-  player0El.classList.remove('player--winner');
-  player1El.classList.remove('player--winner');
-  player1El.classList.add('player--active');
-  player1El.classList.remove('player--active');
-});
+btnNew.addEventListener('click', init);
