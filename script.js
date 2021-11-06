@@ -64,7 +64,15 @@ btnHold.addEventListener('click', function () {
   document.getElementById(`score--${activePlayer}`).textContent =
     scores[activePlayer];
   //2. Check if the score is >= 100
-  //if true then finish the game
+  if (scores[activePlayer] >= 100) {
+    //Finish the game
+    document
+      .querySelector(`player--${activePlayer}`)
+      .classList.add('player-- winner');
+    document
+      .querySelector(`player--${activePlayer}`)
+      .classList.remove('player--active');
+  }
 
   //else switch to the next player
   switchPlayer();
